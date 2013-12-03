@@ -1,0 +1,46 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx}
+% Todos os paragrafos sem identacao
+\setlength\parindent{0pt}
+\pagestyle{empty}
+\usepackage[utf8]{inputenc}
+\usepackage[lined,boxed,commentsnumbered, linesnumbered, portuguese]{algorithm2e}
+
+\begin{document}
+\begin{algorithm}
+\Inicio{ \nonumber
+        Passo0: Seja $m_1 \in (0,1)$ uma tolerância. Dado um multiplicador 
+        $\pi_0$ inicial, resolva o problema lagrangeano $\theta (\pi_0)$ e obtenha os valores de $x$.
+        Faça $v_0 = Ax_0 - 1$. Inicialize $z_1 = x_0$, $\pi^{a}_1 = \pi_0$, $w_1 = v_0$,
+        $p_1 = \pi_0$ e $\epsilon_1=0$. Faça $k = t = 1$ e $T_s = \emptyset$. \\
+        Passo1: Tendo um centro $\pi^{a}_k$ e um passo $s_t > 0$, calcule: \\
+            $\pi_t = \pi^{k} + s_tw_t$ \nonumber \\
+            e \nonumber \\
+            $\delta_t = s_t||w_t||^2 + |<w_t,\pi^a_k - p_t>| + \epsilon_t$ \nonumber \\
+            \If{$delta_t \le \delta_{min}$}{
+                Pare
+            }
+        Passo2: resolva o problema lagrangeano $\theta (\pi_t)$ e obtenha os valores de $x_t$
+        e faça $v_t = Ax_t - 1$. \nonumber \\ 
+        Passo3: 
+        \If{$\theta_t \ge \theta^a_k + m_1\delta_t$}{
+                $\pi^a_{k+1} = \pi_t$ \nonumber \\ 
+                $t_k = t$ \nonumber \\ 
+                $T_s = T_s \cup \{t_k\}$ \nonumber \\ 
+                $k = k + 1$
+            }
+        Passo4: Calcule um novo passo $s_{t+1}$. \nonumber \\ 
+        Calcule: \nonumber \\ 
+        $z_{t+1} = \alpha_tx_t + (1 - \alpha_t)z_t$ \nonumber \\ 
+        $w_{t+1} = \alpha_tv_t + (1 - \alpha_t)w_t$ \nonumber \\ 
+        $p_{t+1} = \alpha_t\pi_t + (1 - \alpha_t)p_t$ \nonumber \\ 
+        $\epsilon_{t+1} = \alpha_t\sigma_t + (1 - \alpha_t)\epsilon_t$ \nonumber \\ 
+        com \nonumber \\ 
+        $\alpha_t = min_{\alpha \in [0,1]} \frac{s_{t+1}}{2} ||\alpha v_t + (1 - \alpha)w_t||^2 + \alpha e_t +(1 - \alpha)e^a_t$ \nonumber \\ 
+        $e_t = <v_t, \pi^a_k - \pi_t>$ \nonumber \\ 
+        $e^a_t = <w_t, \pi^a_k - p_t> + \epsilon_t$ \nonumber \\ 
+        $\sigma_t = (1 - \alpha_t)<v_t - w_t, p_t -\pi_t>$ \nonumber \\ 
+        faça $t = t + 1$ e faça um loop a partir de passo1.
+}            
+\end{algorithm}
+\end{document} 

@@ -1,0 +1,18 @@
+\begin{thebibliography}{10}
+
+\bibitem{balas89}
+Balas, Egon and Ng, ShuMing.
+\newblock On the Set Covering Polytope: I. All the Facets with coefficients in \{0,1,2\}.
+\newblock {\em Mathematical Programming}, 43:57--69, 1989.
+
+\bibitem{Bahiense02}
+L Bahiense, N. Maculan and C. Sagastizábal.
+\newblock The volume algorithm revisited: relation with bundle methods.
+\newblock {\em Mathematical Programming}, 94:41--69, 2002.
+
+\bibitem{Beasley90}
+Beasley, J. E.
+\newblock OR-Library: distributing test problems by electronic mail.
+\newblock {\em Journal of the Operational Research Society}, 41:1069--1072, 1990.
+
+\end{thebibliography}

@@ -1,0 +1,121 @@
+\documentclass{proc}
+
+\usepackage{edbkps}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{subfig}
+%%\usepackage[lined,boxed,commentsnumbered, linesnumbered]{algorithm2e}
+
+
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{0}
+\let\footnote\savefootnote
+\let\footnotetext\savefootnotetext
+\let\footnoterule\savefootnoterule
+\normallatexbib
+\makeatletter
+\renewcommand{\@ptsize}{0}
+\makeatother
+
+%%%%%
+%% If you use a font encoding package, please enter it here, i.e.,
+\usepackage{t1enc}
+
+
+%%%%%
+% Style for inserting .eps files and rotating illustrations or tables
+
+% possible options for graphicx:
+% [dvips], [xdvi], [dvipdf], [dvipsone], [dviwindo], [emtex], [dviwin],
+% [pctexps],  [pctexwin],  [pctexhp],  [pctex32], [truetex], [tcidvi],
+% [oztex], [textures]
+
+\usepackage[dvips]{graphicx}
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\articletitle[The Set Covering problem]
+{Método do Volume Revisado para o problema Set Covering}
+
+\author{João C. Abreu\altaffilmark{1}}
+
+\altaffiltext{1}{Universidade Federal de Minas Gerais, DCC, \\
+Avenida Antônio Carlos 6627, Belo Horizonte, Brazil,\\
+\email{joao.junior@dcc.ufmg.br}}
+
+\anxx{João C. Abreu Jr.,Universidade Federal de Minas Gerais\,
+Avenida Antônio Carlos 6627\, Belo Horizonte\, Brasil\,
+\emailfont{joao.junior@dcc.ufmg.br}}
+
+\begin{abstract}
+Esse relatório apresenta o algoritmo do volume revisado para o problema Set Covering.
+
+\end{abstract}
+
+\begin{keywords}
+\inx{Set Covering}, \inx{Volume Revisado}
+\end{keywords}
+
+\doublespacing
+
+\section{Introdução}
+\label{sec:intro}
+
+Dados $M=\{1,...,m\}$ e $N=\{1,...,n\}$ dois conjuntos. Seja $M_1$, $M_2$, ..., $M_n$ uma coleção de subconjuntos 
+de $M$ com um custo $c_j$ associado a cada um desses subconjuntos. Uma cobertura de $M$ é um subconjunto 
+$F \subset N$ tal que $\cup_{j \in F} M_j = M$. O problema que consiste em encontrar esse subconjunto $F \subset N$ de custo mínimo
+é denominado o problema Set Covering($SCP$). Segundo Balas\cite{balas89} esse problema é $np$-$dificil$. \\
+Para formular o $SCP$ como um problema
+de otimização inteira, é introduzida uma matriz de incidência $A$ de tamanho $mxn$ para a coleção de subconjuntos 
+$M_j, \forall j \in N$, com as entradas dadas por: \
+\begin{align}
+    & a_{ij} = \left \{\begin{array}{ll} 1; & \textrm{se } i \in M_j \textrm{,} \nonumber \\
+    0; & \textrm{caso contrário} \nonumber
+    \end{array}\right. \nonumber
+\end{align}
+A formulação para o $SCP$ proposta em \cite{Bertsimas05} é composta pela função objetivo \eqref{eq:objetivo1}
+e pelas restrições \eqref{eq:ax1}-\eqref{eq:binarias}. Nessa formulação, a função objetivo \eqref{eq:objetivo1} minimiza o custo da cobertura procurada. 
+Os valores constantes $c_j, \forall j \in N$ são os custos de cada subconjunto $M_j$. 
+A variável de decisão $x_j$ é igual a $1$ quando $j \in F$ e $0$, caso contrário, onde $F \subset N$ é a cobertura procurada. \\
+\begin{align}
+    & \text{min } \sum_{j \in N} c_jx_j \label{eq:objetivo1} \\
+    & \text{Sujeito à:} \nonumber \\
+    & Ax \ge 1 \label{eq:ax1} \\ 
+    & x \in \{0,1\}^n \label{eq:binarias}
+\end{align}
+O problema lagrangeano será composto pela associação dos multiplicadores as restrições em \eqref{eq:ax1} e ficará
+como:
+\begin{align}
+    & \theta (\pi) = \text{min } \sum_{j \in N} c_jx_j + \pi(Ax -1) \label{eq:objetivo2} \\
+    & \text{Sujeito à:} \nonumber \\
+    & x \in \{0,1\}^n \label{eq:binarias1}
+\end{align}
+
+\input{algoritmo.tex}
+
+\input{experimentos.tex}
+Todo código fonte produzido por esse trabalho pode ser obtido no endereço eletrônico: $https://github.com/joaojunior/volume\_revisado2scp$
+
+\bibliographystyle{plain}
+%chapbblname{tp}  % The name of the .bbl file, what is normally the name of your .tex file.
+\bibliography{tp} %\chapbibliography{gow}
+
+\end{document}
+
+
+
+
+
+% LocalWords:  comeca ij kj ji lll hardcoded eq ranqueamento recuperável RRSP
+% LocalWords:  Recuperável Rent Minmax Regret Single Pair MSP SPP Cplex

@@ -1,0 +1,14 @@
+python main.py instancias_teste/scp62.txt 146 >> result.txt
+python main.py instancias_teste/scp63.txt 145 >> result.txt
+python main.py instancias_teste/scp64.txt 131 >> result.txt
+python main.py instancias_teste/scp65.txt 161 >> result.txt
+python main.py instancias_teste/scpa1.txt 253 >> result.txt
+python main.py instancias_teste/scpa2.txt 252 >> result.txt
+python main.py instancias_teste/scpa3.txt 232 >> result.txt
+python main.py instancias_teste/scpa4.txt 234 >> result.txt
+python main.py instancias_teste/scpa5.txt 236 >> result.txt
+python main.py instancias_teste/scpb1.txt 69 >> result.txt
+python main.py instancias_teste/scpb2.txt 76 >> result.txt
+python main.py instancias_teste/scpb3.txt 80 >> result.txt
+python main.py instancias_teste/scpb4.txt 79 >> result.txt
+python main.py instancias_teste/scpb5.txt 72 >> result.txt
